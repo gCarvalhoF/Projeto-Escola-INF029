@@ -1,0 +1,24 @@
+Implementei a lista encadeada para alunos, ponteiros, função de cadastro remodelada, função para inserir o aluno na lista encadeada, função de listagem criada (precisa de polimento visual).
+
+Arquivos criados: 
+
+    - aluno.c
+        Coloquei todas as funções somente dos alunos dentro desse arquivo.
+
+        Adicionei o parâmetro do ponteiro para o array de alunos declarado no Main.
+
+        As alterações agora são feitas na variável dentro da função e registradas pelo ponteiro.
+
+
+    - disciplina.c 
+        Coloquei todas as funções somente das disciplinas dentro desse arquivo
+
+    - professor.c
+        Coloquei todas as funções somente dos professores dentro desse arquivo.
+
+        Adicionei o parâmetro do ponteiro para o array de professores declarado no Main.
+
+        As alterações agora são feitas na variável dentro da função e registradas pelo ponteiro.
+
+    - structs.h
+        Coloquei todos os structs, que precisam ser acessados por todos os arquivos, dentro desse arquivo.
