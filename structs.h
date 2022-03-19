@@ -8,7 +8,7 @@ typedef struct
 typedef struct dados_pessoa
 {
     char nome[31];
-    char matricula[15];
+    int matricula;
     char cpf[14];
     char sexo;
     Data dataNascimento;

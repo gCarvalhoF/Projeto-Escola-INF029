@@ -1,8 +1,7 @@
 #include "structs.h"
 #include <ctype.h>
 
-void cadastroAluno(Pessoa **inicio);
-void listarAlunos(Pessoa **inicio);
-void inserirAlunoNaLista(Pessoa **inicio, Pessoa *novoAluno);
+int cadastroAluno(Pessoa lista_aluno[], int qtd_alunos);
+void listarAlunos(Pessoa lista_aluno[], int qtd_alunos);
 void apagarCadastro();
 void atualizarCadastro();

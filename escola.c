@@ -2,13 +2,14 @@
 #include <string.h>
 #include <stdlib.h>
 #include "aluno.h"
+#include "escola.h"
 // #include "professor.h"
 
 void main()
 {
-    Pessoa aluno, *inicioListaAluno = NULL;
-    Pessoa professor, *inicioListaProfessor = NULL;
-    Pessoa *atual, *tmp;
+    Pessoa lista_aluno[TAM_LISTA_ALUNOS];
+    Pessoa lista_professor[TAM_LISTA_PROFESSORES];
+    int qtd_alunos = 0, qtd_professores = 0;
     char continuar;
 
     // printf("-----------------------------\n");
@@ -16,22 +17,15 @@ void main()
     // printf("-----------------------------\n");
 
     while (continuar != 'N')
-    {
-        cadastroAluno(&inicioListaAluno);
+    {  
+        qtd_alunos = cadastroAluno(lista_aluno, qtd_alunos);     
 
         printf("Deseja cadastrar outro aluno(a)? (S/N)\n");
         scanf("%c", &continuar);
         continuar = toupper(continuar);
-        fflush(stdin);
+        getchar();
+       
     }
 
-    listarAlunos(&inicioListaAluno);
-
-    atual = inicioListaAluno;
-    while (atual != NULL)
-    {
-        tmp = atual->prox;
-        free(atual);
-        atual = tmp;
-    }
+    listarAlunos(lista_aluno, qtd_alunos);
 }
