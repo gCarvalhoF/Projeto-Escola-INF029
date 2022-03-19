@@ -4,90 +4,67 @@
 #include "structs.h"
 #include <ctype.h>
 
-void inserirProfessorNaLista(Pessoa **inicio, Pessoa *novoAluno)
+static int matriculaAtual = 100;
+
+int gerarMatricula()
 {
-    Pessoa *atual;
-
-    if (*inicio == NULL)
-    {
-        *inicio = novoProfessor;
-    }
-    else
-    {
-        atual = *inicio;
-
-        while (atual->prox != NULL)
-        {
-            atual = atual->prox;
-        }
-        atual->prox = novoProfessor;
-    }
-
-    novoProfessor->prox = NULL;
+    matriculaAtual++;
+    return matriculaAtual;
 }
 
-void cadastroProfessor(Pessoa **inicio)
+int cadastroAluno(Pessoa lista_professor[], int qtd_professores)
 {
-    int i, j;
-    char continuar;
-    Pessoa *novoProfessor = (Pessoa *)malloc(sizeof(Pessoa));
-
     printf("-----------------------------\n");
-    printf("Nome do professor: ");
-    fgets(novoProfessor->nome, 31, stdin);
-    size_t ln = strlen(novoProfessor->nome) - 1;
-    if (novoProfessor->nome[ln] == '\n')
-        novoProfessor->nome[ln] = '\0';
     fflush(stdin);
+    printf("Nome do professor: ");
+    fgets(lista_professor[qtd_professores].nome, 31, stdin);
+    size_t ln = strlen(lista_professor[qtd_professores].nome) - 1;
+    if (lista_professor[qtd_professores].nome[ln] == '\n')
+        lista_professor[qtd_professores].nome[ln] = '\0';
 
     printf("Digite o CPF: ");
-    fgets(novoProfessor->cpf, 14, stdin);
-    ln = strlen(novoProfessor->cpf) - 1;
-    if (novoProfessor->cpf[ln] == '\n')
-        novoProfessor->cpf[ln] = '\0';
-    fflush(stdin);
+    fgets(lista_professor[qtd_professores].cpf, 15, stdin);
+    ln = strlen(lista_professor[qtd_professores].cpf) - 1;
+    if (lista_professor[qtd_professores].cpf[ln] == '\n')
+        lista_professor[qtd_professores].cpf[ln] = '\0';
+    getchar();
 
-    printf("Matrícula do professor: ");
-    fgets(novoProfessor->matricula, 14, stdin);
-    ln = strlen(novoProfessor->matricula) - 1;
-    if (novoProfessor->matricula[ln] == '\n')
-        novoProfessor->matricula[ln] = '\0';
-    fflush(stdin);
+    lista_professor[qtd_professores].matricula = gerarMatricula();
 
     printf("Digite o sexo: ");
-    scanf("%c", &novoProfessor->sexo);
-    fflush(stdin);
+    scanf("%c", &lista_professor[qtd_professores].sexo);
 
     printf("Data de nascimento\n");
 
     printf("Dia: ");
-    scanf("%d", &novoProfessor->dataNascimento.dia);
     fflush(stdin);
+    scanf("%d", &lista_professor[qtd_professores].dataNascimento.dia);
 
     printf("Mes: ");
-    scanf("%d", &novoProfessor->dataNascimento.mes);
     fflush(stdin);
+    scanf("%d", &lista_professor[qtd_professores].dataNascimento.mes);
 
     printf("Ano: ");
-    scanf("%d", &novoProfessor->dataNascimento.ano);
+    scanf("%d", &lista_professor[qtd_professores].dataNascimento.ano);
     fflush(stdin);
 
-    inserirAlunoNaLista(inicio, novoProfessor);
+    qtd_professores++;
+
+    return qtd_professores;
 }
 
-void listarProfessores(Pessoa **inicio)
+void listarProfessores(Pessoa lista_professor[], int qtd_professores)
 {
-    Pessoa *atual = *inicio;
-    while (atual != NULL)
+    int i;
+
+    for (i = 0; i < qtd_professores; i++)
     {
         printf("\n-----------------------------\n");
-        puts(atual->nome);
-        puts(atual->matricula);
-        puts(atual->cpf);
-        printf("%c \n", atual->sexo);
-        printf("%02d / %02d / %4d", atual->dataNascimento.dia, atual->dataNascimento.mes, atual->dataNascimento.ano);
-
-        atual = atual->prox;
+        puts(lista_professor[i].nome);
+        printf("%d \n", lista_professor[i].matricula);
+        puts(lista_professor[i].cpf);
+        printf("%c \n", lista_professor[i].sexo);
+        printf("%02d / %02d / %4d", lista_professor[i].dataNascimento.dia, lista_professor[i].dataNascimento.mes, lista_professor[i].dataNascimento.ano);
     }
 }
 

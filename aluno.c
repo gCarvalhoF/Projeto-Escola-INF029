@@ -12,7 +12,7 @@ int gerarMatricula()
     return matriculaAtual;
 }
 
-int cadastroAluno(Pessoa lista_aluno[], int qtd_alunos)
+int cadastroProfessor(Pessoa lista_aluno[], int qtd_alunos)
 {
     printf("-----------------------------\n");
     fflush(stdin);
