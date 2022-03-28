@@ -29,7 +29,7 @@ do{
 
 void main()
 {
-    menu();
+    
     Pessoa lista_aluno[TAM_LISTA_ALUNOS];
     Pessoa lista_professor[TAM_LISTA_PROFESSORES];
     int qtd_alunos = 0, qtd_professores = 0;
