@@ -68,7 +68,46 @@ void listarAlunos(Pessoa lista_aluno[], int qtd_alunos)
     }
 }
 
-void apagarCadastro() {
+void listarAlunosSexo(Pessoa lista_aluno[], int qtd_alunos){
+  int opcao;
+
+  size_t n = sizeof(lista_aluno);
+
+  printf("Deseja Lista os Aluno do sexo 1- Masculino ou 2- Feminino? ");
+  scanf(%d,&opcao)
+
+  
+  if(opcao==1){
+    for(i=0, i<=n, i++){
+      if(lista_aluno[i]=="M"){
+        printf("\n-----------------------------\n");
+        puts(lista_aluno[i].nome);
+        printf("%d \n", lista_aluno[i].matricula);
+        puts(lista_aluno[i].cpf);
+        printf("%c \n", lista_aluno[i].sexo);
+        printf("%02d / %02d / %4d", lista_aluno[i].dataNascimento.dia, lista_aluno[i].dataNascimento.mes, lista_aluno[i].dataNascimento.ano);        
+      }
+    }
+
+  }else if(opcao==2){
+    for(i=0, i<=n, i++){
+      if(lista_aluno[i]=="F"){
+        printf("\n-----------------------------\n");
+        puts(lista_aluno[i].nome);
+        printf("%d \n", lista_aluno[i].matricula);
+        puts(lista_aluno[i].cpf);
+        printf("%c \n", lista_aluno[i].sexo);
+        printf("%02d / %02d / %4d", lista_aluno[i].dataNascimento.dia, lista_aluno[i].dataNascimento.mes, lista_aluno[i].dataNascimento.ano);        
+      }
+    }    
+  }else{
+    printf("Opção Incorreta!");
+  }
+
+  
+}
+
+void apagarCadastro(Pessoa lista_aluno[], int qtd_alunos) {
 
   int retorno_busca;
   int opcao;
@@ -96,10 +135,16 @@ void apagarCadastro() {
       scanf("%d",%apagar);
       fflush(stdin);
 
+    size_t n = sizeof(lista_aluno);
+      
       if(apagar==1){
-        for(i=retorno_busca,i<=, i++){
+        for(i=retorno_busca,i<n, i++){
+          lista_aluno[i]=lista_aluno[i+1];
+          printf("Registro Apagado do Sistema! \n");
+          }
+      }else{
+          print("Exclusão Não Realizada \n");
         }
-      }
       
     }
 
@@ -113,7 +158,9 @@ void apagarCadastro() {
 
 void atualizarCadastro() {}
 
-int buscaAluno(){
+
+
+int buscaAluno(Pessoa lista_aluno[], int qtd_alunos){
 
   int opcao;
   int buscaMatricula;
@@ -139,7 +186,7 @@ int buscaAluno(){
     }
   }
 
-  if(opcao==1){
+  if(opcao==2){
     printf("Digite a matricula do aluno(a): ")
     scanf(%d, &buscaMatricula);
     fflush(stdin);  
@@ -154,5 +201,29 @@ int buscaAluno(){
     }
   }
   }
+  
+}
+
+void aniversarianteDoMes(Pessoa lista_aluno[], int qtd_alunos){
+
+  int mes;
+
+  printf("Digite o Mês (em número) que deseja listar os aniversáriantes:");
+  scanf("%d",&mes);
+
+  if(mes<0 && mes<13){
+    printf("ANIVERSARIANTES DO MÊS %d: \n",mes);
+    for(i=0, i<=qtd_alunos, i++){
+      if(lista_aluno[i].dataNascimento.mes==mes){
+        printf("\n-----------------------------\n");
+        puts(lista_aluno[i].nome);
+        printf("%d \n", lista_aluno[i].matricula);
+        printf("%02d / %02d / %4d", lista_aluno[i].dataNascimento.dia, lista_aluno[i].dataNascimento.mes, lista_aluno[i].dataNascimento.ano);        
+      }
+    }
+
+  }else{
+    printf("Mês Incorreto. Tente Novamente");
+  }  
   
 }

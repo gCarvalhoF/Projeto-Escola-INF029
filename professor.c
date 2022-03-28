@@ -68,6 +68,46 @@ void listarProfessores(Pessoa lista_professor[], int qtd_professores)
     }
 }
 
+void listarProfessorSexo(Pessoa lista_professor[], int qtd_professores){
+  int opcao;
+
+  size_t n = sizeof(lista_professor);
+
+  printf("Deseja Lista os Professores do sexo 1- Masculino ou 2- Feminino? ");
+  scanf(%d,&opcao)
+
+  
+  if(opcao==1){
+    for(i=0, i<=n, i++){
+      if(lista_professor[i]=="M"){
+        printf("\n-----------------------------\n");
+        puts(lista_professor[i].nome);
+        printf("%d \n", lista_professor[i].matricula);
+        puts(lista_professor[i].cpf);
+        printf("%c \n", lista_professor[i].sexo);
+        printf("%02d / %02d / %4d", lista_professor[i].dataNascimento.dia, lista_professor[i].dataNascimento.mes, lista_professor[i].dataNascimento.ano);       
+      }
+    }
+
+  }else if(opcao==2){
+    for(i=0, i<=n, i++){
+      if(lista_professor[i]=="F"){
+        printf("\n-----------------------------\n");
+        puts(lista_professor[i].nome);
+        printf("%d \n", lista_professor[i].matricula);
+        puts(lista_professor[i].cpf);
+        printf("%c \n", lista_professor[i].sexo);
+        printf("%02d / %02d / %4d", lista_professor[i].dataNascimento.dia, lista_professor[i].dataNascimento.mes, lista_professor[i].dataNascimento.ano);       
+      }
+    }    
+  }else{
+    printf("Opção Incorreta!");
+  }
+
+  
+}
+
+
 void apagarCadastro() {}
 
 void atualizarCadastro() {}
