@@ -29,10 +29,10 @@ int menu()
 
 void main()
 {
-
+    Disciplina lista_disciplina[TAM_LISTA_DISCIPLINAS];
     Pessoa lista_aluno[TAM_LISTA_ALUNOS];
     Pessoa lista_professor[TAM_LISTA_PROFESSORES];
-    int qtd_alunos = 0, qtd_professores = 0;
+    int qtd_alunos = 0, qtd_professores = 0, qtd_disciplina = 0;
     char continuar;
     char continuar_break = 'N';
     int menu_opt;
@@ -54,6 +54,7 @@ void main()
         case 2:
             cadastroProfessor(lista_professor, qtd_professores);
         case 3:
+            continue;
         case 4:
             continue;
         case 5:
@@ -61,7 +62,7 @@ void main()
         case 6:
             listarProfessores(lista_professor, qtd_professores);
         case 7:
-            continue;
+            listarDisciplina(lista_disciplina, qtd_disciplina);
         case 8:
             continue;
 

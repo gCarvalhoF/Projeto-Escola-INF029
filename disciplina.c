@@ -34,3 +34,19 @@ void cadastroDisciplina()
         printf("%d", disciplinas[i].semestre);
     }
 }
+
+void listarDisciplina(Disciplina lista_disciplina[], int qtd_disciplina)
+{
+  int i;
+
+  for (i = 0; i < qtd_disciplina; i++)
+  {
+    printf("\n-----------------------------\n");
+    puts(lista_disciplina[i].nome);
+    printf("%d \n", lista_disciplina[i].codigo);
+    printf("%s \n", lista_disciplina[i].Pessoa professor);
+    puts(lista_disciplina[i].semestre);
+    printf("%s \n", lista_disciplina[i].Pessoa alunos);
+    
+  }
+}
