@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <string.h>
+
+#define TAM_DISCIPLINAS 10
 
 void cadastroDisciplina()
 {
