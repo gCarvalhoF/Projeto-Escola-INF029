@@ -1,9 +1,9 @@
-#include "structs.h"
 #include <ctype.h>
+#include "aluno.h"
 
 int cadastroProfessor(Pessoa lista_aluno[], int qtd_alunos);
-int gerarMatricula();
+int gerarMatriculaProfessor();
 void listarProfessores(Pessoa lista_professor[], int qtd_professores);
-void apagarCadastro();
-void atualizarCadastro();
+void apagarProfessor();
+void atualizarProfessor();
 void listarProfessorSexo(Pessoa lista_professor[], int qtd_professores);

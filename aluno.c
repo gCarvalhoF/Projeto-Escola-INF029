@@ -1,114 +1,121 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "structs.h"
 #include <ctype.h>
+#include "structs.h"
 
 static int matriculaAtual = 20220000;
 
-int gerarMatricula()
+int gerarMatriculaAluno()
 {
-    matriculaAtual++;
-    return matriculaAtual;
+  matriculaAtual++;
+  return matriculaAtual;
 }
 
 int cadastroAluno(Pessoa lista_aluno[], int qtd_alunos)
 {
-    printf("-----------------------------\n");
-    fflush(stdin);
-    printf("Nome do aluno: ");
-    fgets(lista_aluno[qtd_alunos].nome, 31, stdin);
-    size_t ln = strlen(lista_aluno[qtd_alunos].nome) - 1;
-    if (lista_aluno[qtd_alunos].nome[ln] == '\n')
-        lista_aluno[qtd_alunos].nome[ln] = '\0';
+  printf("-----------------------------\n");
+  fflush(stdin);
+  printf("Nome do aluno: ");
+  fgets(lista_aluno[qtd_alunos].nome, 31, stdin);
+  size_t ln = strlen(lista_aluno[qtd_alunos].nome) - 1;
+  if (lista_aluno[qtd_alunos].nome[ln] == '\n')
+    lista_aluno[qtd_alunos].nome[ln] = '\0';
 
-    printf("Digite o CPF: ");
-    fgets(lista_aluno[qtd_alunos].cpf, 15, stdin);
-    ln = strlen(lista_aluno[qtd_alunos].cpf) - 1;
-    if (lista_aluno[qtd_alunos].cpf[ln] == '\n')
-        lista_aluno[qtd_alunos].cpf[ln] = '\0';
-    getchar();
+  printf("Digite o CPF: ");
+  fgets(lista_aluno[qtd_alunos].cpf, 15, stdin);
+  ln = strlen(lista_aluno[qtd_alunos].cpf) - 1;
+  if (lista_aluno[qtd_alunos].cpf[ln] == '\n')
+    lista_aluno[qtd_alunos].cpf[ln] = '\0';
+  getchar();
 
-    lista_aluno[qtd_alunos].matricula = gerarMatricula();
+  lista_aluno[qtd_alunos].matricula = gerarMatriculaAluno();
 
-    printf("Digite o sexo: ");
-    scanf("%c", &lista_aluno[qtd_alunos].sexo);
+  printf("Digite o sexo: ");
+  scanf("%c", &lista_aluno[qtd_alunos].sexo);
 
-    printf("Data de nascimento\n");
+  printf("Data de nascimento\n");
 
-    printf("Dia: ");
-    fflush(stdin);
-    scanf("%d", &lista_aluno[qtd_alunos].dataNascimento.dia);
+  printf("Dia: ");
+  fflush(stdin);
+  scanf("%d", &lista_aluno[qtd_alunos].dataNascimento.dia);
 
-    printf("Mes: ");
-    fflush(stdin);
-    scanf("%d", &lista_aluno[qtd_alunos].dataNascimento.mes);
+  printf("Mes: ");
+  fflush(stdin);
+  scanf("%d", &lista_aluno[qtd_alunos].dataNascimento.mes);
 
-    printf("Ano: ");
-    scanf("%d", &lista_aluno[qtd_alunos].dataNascimento.ano);
-    fflush(stdin);
+  printf("Ano: ");
+  scanf("%d", &lista_aluno[qtd_alunos].dataNascimento.ano);
+  fflush(stdin);
 
-    qtd_alunos++;
+  qtd_alunos++;
 
-    return qtd_alunos;
+  return qtd_alunos;
 }
 
 void listarAlunos(Pessoa lista_aluno[], int qtd_alunos)
 {
-    int i;
+  int i;
 
-    for (i = 0; i < qtd_alunos; i++)
-    {
-        printf("\n-----------------------------\n");
-        puts(lista_aluno[i].nome);
-        printf("%d \n", lista_aluno[i].matricula);
-        puts(lista_aluno[i].cpf);
-        printf("%c \n", lista_aluno[i].sexo);
-        printf("%02d / %02d / %4d", lista_aluno[i].dataNascimento.dia, lista_aluno[i].dataNascimento.mes, lista_aluno[i].dataNascimento.ano);
-    }
+  for (i = 0; i < qtd_alunos; i++)
+  {
+    printf("\n-----------------------------\n");
+    puts(lista_aluno[i].nome);
+    printf("%d \n", lista_aluno[i].matricula);
+    puts(lista_aluno[i].cpf);
+    printf("%c \n", lista_aluno[i].sexo);
+    printf("%02d / %02d / %4d", lista_aluno[i].dataNascimento.dia, lista_aluno[i].dataNascimento.mes, lista_aluno[i].dataNascimento.ano);
+  }
 }
 
-void listarAlunosSexo(Pessoa lista_aluno[], int qtd_alunos){
+void listarAlunosSexo(Pessoa lista_aluno[], int qtd_alunos)
+{
   int opcao;
   int i;
 
   size_t n = sizeof(lista_aluno->nome);
 
   printf("Deseja Lista os Aluno do sexo 1- Masculino ou 2- Feminino? ");
-  scanf("%d",&opcao);
+  scanf("%d", &opcao);
 
-  
-  if(opcao==1){
-    for(i=0; i<=n; i++){
-      if(lista_aluno[i].sexo=='M'){
+  if (opcao == 1)
+  {
+    for (i = 0; i <= n; i++)
+    {
+      if (lista_aluno[i].sexo == 'M')
+      {
         printf("\n-----------------------------\n");
         puts(lista_aluno[i].nome);
         printf("%d \n", lista_aluno[i].matricula);
         puts(lista_aluno[i].cpf);
         printf("%c \n", lista_aluno[i].sexo);
-        printf("%02d / %02d / %4d", lista_aluno[i].dataNascimento.dia, lista_aluno[i].dataNascimento.mes, lista_aluno[i].dataNascimento.ano);        
+        printf("%02d / %02d / %4d", lista_aluno[i].dataNascimento.dia, lista_aluno[i].dataNascimento.mes, lista_aluno[i].dataNascimento.ano);
       }
     }
-
-  }else if(opcao==2){
-    for(i=0; i<=n; i++){
-      if(lista_aluno[i].sexo=='F'){
+  }
+  else if (opcao == 2)
+  {
+    for (i = 0; i <= n; i++)
+    {
+      if (lista_aluno[i].sexo == 'F')
+      {
         printf("\n-----------------------------\n");
         puts(lista_aluno[i].nome);
         printf("%d \n", lista_aluno[i].matricula);
         puts(lista_aluno[i].cpf);
         printf("%c \n", lista_aluno[i].sexo);
-        printf("%02d / %02d / %4d", lista_aluno[i].dataNascimento.dia, lista_aluno[i].dataNascimento.mes, lista_aluno[i].dataNascimento.ano);        
+        printf("%02d / %02d / %4d", lista_aluno[i].dataNascimento.dia, lista_aluno[i].dataNascimento.mes, lista_aluno[i].dataNascimento.ano);
       }
-    }    
-  }else{
+    }
+  }
+  else
+  {
     printf("Opção Incorreta!");
   }
-
-  
 }
 
-int buscaAluno(Pessoa lista_aluno[], int qtd_alunos){
+int buscaAluno(Pessoa lista_aluno[], int qtd_alunos)
+{
 
   int opcao;
   int buscaMatricula;
@@ -118,115 +125,121 @@ int buscaAluno(Pessoa lista_aluno[], int qtd_alunos){
   printf("Deseja Buscar o Aluno por 1-Nome ou 2- Matricula ? : ");
   scanf("%d", &opcao);
 
-  if(opcao==1){
+  if (opcao == 1)
+  {
     printf("Digite o nome do aluno(a): ");
     fgets(buscaNome, 31, stdin);
     size_t ln = strlen(buscaNome) - 1;
-      if (buscaNome[ln] == '\n')
-          buscaNome[ln] = '\0';  
+    if (buscaNome[ln] == '\n')
+      buscaNome[ln] = '\0';
 
-    for(i=0; i<=qtd_alunos; i++){
-      if(buscaNome==lista_aluno[i].nome)
+    for (i = 0; i <= qtd_alunos; i++)
+    {
+      if (buscaNome == lista_aluno[i].nome)
         return i;
-      else{
+      else
+      {
         printf("Aluno não encontrado!");
         return 0;
       }
     }
   }
 
-  if(opcao==2){
+  if (opcao == 2)
+  {
     printf("Digite a matricula do aluno(a): ");
     scanf("%d", &buscaMatricula);
-    fflush(stdin);  
+    fflush(stdin);
 
-    for(i=0; i<=qtd_alunos; i++){
-      if(buscaMatricula==lista_aluno[i].matricula)
+    for (i = 0; i <= qtd_alunos; i++)
+    {
+      if (buscaMatricula == lista_aluno[i].matricula)
         return i;
-      else{
+      else
+      {
         printf("Aluno não encontrado!");
         return 0;
       }
     }
   }
-  
-  
 }
 
-void apagarCadastro(Pessoa lista_aluno[], int qtd_alunos) {
+void apagarAluno(Pessoa lista_aluno[], int qtd_alunos)
+{
 
   int retorno_busca;
   int opcao;
   int apagar;
   int i;
 
-
   printf("---Modulo de Exclusão de Alunos---");
   printf(" Deseja: 1- Buscar ou Aluno 2 - Sair : \n");
-  scanf("%d",&opcao);
+  scanf("%d", &opcao);
   fflush(stdin);
-  
-  if(opcao==1){
+
+  if (opcao == 1)
+  {
     retorno_busca = buscaAluno(lista_aluno, qtd_alunos);
 
-    if(retorno_busca!=0){
+    if (retorno_busca != 0)
+    {
       printf("-----Dados do Aluno Encontrado-----\n");
       printf("\n-----------------------------\n");
-        puts(lista_aluno[retorno_busca].nome);
-        printf("%d \n", lista_aluno[retorno_busca].matricula);
-        puts(lista_aluno[retorno_busca].cpf);
-        printf("%c \n", lista_aluno[retorno_busca].sexo);
-        printf("%02d / %02d / %4d", lista_aluno[retorno_busca].dataNascimento.dia, lista_aluno[retorno_busca].dataNascimento.mes, lista_aluno[retorno_busca].dataNascimento.ano);
+      puts(lista_aluno[retorno_busca].nome);
+      printf("%d \n", lista_aluno[retorno_busca].matricula);
+      puts(lista_aluno[retorno_busca].cpf);
+      printf("%c \n", lista_aluno[retorno_busca].sexo);
+      printf("%02d / %02d / %4d", lista_aluno[retorno_busca].dataNascimento.dia, lista_aluno[retorno_busca].dataNascimento.mes, lista_aluno[retorno_busca].dataNascimento.ano);
 
       printf("/n");
       printf("Deseja excluir o registro desse(a) aluno(a)? 1- Sim ou 2- Não: ");
-      scanf("%d",&apagar);
+      scanf("%d", &apagar);
       fflush(stdin);
 
-    size_t n = sizeof(lista_aluno->nome);
-      
-      if(apagar==1){
-        for(i=retorno_busca;i<n; i++){
-          lista_aluno[i]=lista_aluno[i+1];
+      size_t n = sizeof(lista_aluno->nome);
+
+      if (apagar == 1)
+      {
+        for (i = retorno_busca; i < n; i++)
+        {
+          lista_aluno[i] = lista_aluno[i + 1];
           printf("Registro Apagado do Sistema! \n");
-          }
-      }else{
-          printf("Exclusão Não Realizada \n");
         }
-      
+      }
+      else
+      {
+        printf("Exclusão Não Realizada \n");
+      }
     }
-
-    
   }
-  
-
-  
-  
 }
 
-void atualizarCadastro() {}
+void atualizarAluno() {}
 
-
-void aniversarianteDoMes(Pessoa lista_aluno[], int qtd_alunos){
+void aniversarianteDoMesAluno(Pessoa lista_aluno[], int qtd_alunos)
+{
 
   int mes;
   int i;
   printf("Digite o Mês (em número) que deseja listar os aniversáriantes:");
-  scanf("%d",&mes);
+  scanf("%d", &mes);
 
-  if(mes<0 && mes<13){
-    printf("ANIVERSARIANTES DO MÊS %d: \n",mes);
-    for(i=0;i<=qtd_alunos; i++){
-      if(lista_aluno[i].dataNascimento.mes==mes){
+  if (mes < 0 && mes < 13)
+  {
+    printf("ANIVERSARIANTES DO MÊS %d: \n", mes);
+    for (i = 0; i <= qtd_alunos; i++)
+    {
+      if (lista_aluno[i].dataNascimento.mes == mes)
+      {
         printf("\n-----------------------------\n");
         puts(lista_aluno[i].nome);
         printf("%d \n", lista_aluno[i].matricula);
-        printf("%02d / %02d / %4d", lista_aluno[i].dataNascimento.dia, lista_aluno[i].dataNascimento.mes, lista_aluno[i].dataNascimento.ano);        
+        printf("%02d / %02d / %4d", lista_aluno[i].dataNascimento.dia, lista_aluno[i].dataNascimento.mes, lista_aluno[i].dataNascimento.ano);
       }
     }
-
-  }else{
+  }
+  else
+  {
     printf("Mês Incorreto. Tente Novamente");
-  }  
-  
+  }
 }

@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "professor.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "structs.h": "c"
     }
 }

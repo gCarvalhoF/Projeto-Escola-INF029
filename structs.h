@@ -5,14 +5,13 @@ typedef struct
     int ano;
 } Data;
 
-typedef struct dados_pessoa
+typedef struct
 {
     char nome[31];
     int matricula;
     char cpf[14];
     char sexo;
     Data dataNascimento;
-    struct dados_pessoa *prox;
 } Pessoa;
 
 typedef struct
