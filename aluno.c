@@ -243,3 +243,42 @@ void aniversarianteDoMesAluno(Pessoa lista_aluno[], int qtd_alunos)
     printf("Mês Incorreto. Tente Novamente");
   }
 }
+
+void listarAlunoOrdemAlfa(Pessoa lista_aluno[], int qtd_alunos)
+{
+  int i;
+  int j;
+  int r;
+  Pessoa lista_aluno_ordenada[qtd_alunos];
+  Pessoa aux;
+
+  for (i = 0; i <= qtd_alunos; i++)
+  {
+    lista_aluno_ordenada[i] = lista_aluno[i];
+  }
+
+  for (i = 0; i <= qtd_alunos; i++)
+  {
+    for (j = 1; j <= qtd_alunos; j++)
+    {
+
+      r = strcmp(lista_aluno_ordenada[i].nome, lista_aluno_ordenada[j].nome);
+      if (r > 0)
+      {
+        aux = lista_aluno_ordenada[i];
+        lista_aluno_ordenada[i] = lista_aluno_ordenada[j];
+        lista_aluno_ordenada[j] = aux;
+      }
+    }
+  }
+  printf("Lista de Alunos por Ordem Alfabetica: \n");
+  for (i = 0; i <= qtd_alunos; i++)
+  {
+    printf("\n-----------------------------\n");
+    puts(lista_aluno_ordenada[i].nome);
+    printf("%d \n", lista_aluno_ordenada[i].matricula);
+    puts(lista_aluno_ordenada[i].cpf);
+    printf("%c \n", lista_aluno_ordenada[i].sexo);
+    printf("%02d / %02d / %4d", lista_aluno_ordenada[i].dataNascimento.dia, lista_aluno_ordenada[i].dataNascimento.mes, lista_aluno_ordenada[i].dataNascimento.ano);
+  }
+}

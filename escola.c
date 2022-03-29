@@ -39,7 +39,6 @@ void main()
 
     // printf("-----------------------------\n");
     menu_opt = menu();
-    printf("%d", menu_opt);
     for (;;)
     {
         switch (menu_opt)
