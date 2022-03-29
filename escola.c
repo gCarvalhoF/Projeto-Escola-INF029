@@ -27,7 +27,7 @@ int menu()
     return menu_opt;
 }
 
-void main()
+int main(int argc, char **argv)
 {
     Disciplina lista_disciplina[TAM_LISTA_DISCIPLINAS];
     Pessoa lista_aluno[TAM_LISTA_ALUNOS];
