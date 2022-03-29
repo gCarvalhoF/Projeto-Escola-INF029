@@ -70,16 +70,17 @@ void listarAlunos(Pessoa lista_aluno[], int qtd_alunos)
 
 void listarAlunosSexo(Pessoa lista_aluno[], int qtd_alunos){
   int opcao;
+  int i;
 
-  size_t n = sizeof(lista_aluno);
+  size_t n = sizeof(lista_aluno->nome);
 
   printf("Deseja Lista os Aluno do sexo 1- Masculino ou 2- Feminino? ");
-  scanf(%d,&opcao)
+  scanf("%d",&opcao);
 
   
   if(opcao==1){
-    for(i=0, i<=n, i++){
-      if(lista_aluno[i]=="M"){
+    for(i=0; i<=n; i++){
+      if(lista_aluno[i].sexo=='M'){
         printf("\n-----------------------------\n");
         puts(lista_aluno[i].nome);
         printf("%d \n", lista_aluno[i].matricula);
@@ -90,8 +91,8 @@ void listarAlunosSexo(Pessoa lista_aluno[], int qtd_alunos){
     }
 
   }else if(opcao==2){
-    for(i=0, i<=n, i++){
-      if(lista_aluno[i]=="F"){
+    for(i=0; i<=n; i++){
+      if(lista_aluno[i].sexo=='F'){
         printf("\n-----------------------------\n");
         puts(lista_aluno[i].nome);
         printf("%d \n", lista_aluno[i].matricula);
@@ -107,19 +108,66 @@ void listarAlunosSexo(Pessoa lista_aluno[], int qtd_alunos){
   
 }
 
+int buscaAluno(Pessoa lista_aluno[], int qtd_alunos){
+
+  int opcao;
+  int buscaMatricula;
+  char buscaNome[30];
+  int i;
+
+  printf("Deseja Buscar o Aluno por 1-Nome ou 2- Matricula ? : ");
+  scanf("%d", &opcao);
+
+  if(opcao==1){
+    printf("Digite o nome do aluno(a): ");
+    fgets(buscaNome, 31, stdin);
+    size_t ln = strlen(buscaNome) - 1;
+      if (buscaNome[ln] == '\n')
+          buscaNome[ln] = '\0';  
+
+    for(i=0; i<=qtd_alunos; i++){
+      if(buscaNome==lista_aluno[i].nome)
+        return i;
+      else{
+        printf("Aluno não encontrado!");
+        return 0;
+      }
+    }
+  }
+
+  if(opcao==2){
+    printf("Digite a matricula do aluno(a): ");
+    scanf("%d", &buscaMatricula);
+    fflush(stdin);  
+
+    for(i=0; i<=qtd_alunos; i++){
+      if(buscaMatricula==lista_aluno[i].matricula)
+        return i;
+      else{
+        printf("Aluno não encontrado!");
+        return 0;
+      }
+    }
+  }
+  
+  
+}
+
 void apagarCadastro(Pessoa lista_aluno[], int qtd_alunos) {
 
   int retorno_busca;
   int opcao;
   int apagar;
+  int i;
 
-  printf("---Modulo de Exclusão de Alunos---")
+
+  printf("---Modulo de Exclusão de Alunos---");
   printf(" Deseja: 1- Buscar ou Aluno 2 - Sair : \n");
-  scanf("%d",%opcao);
+  scanf("%d",&opcao);
   fflush(stdin);
   
   if(opcao==1){
-    retorno_busca = buscaAluno();
+    retorno_busca = buscaAluno(lista_aluno, qtd_alunos);
 
     if(retorno_busca!=0){
       printf("-----Dados do Aluno Encontrado-----\n");
@@ -132,18 +180,18 @@ void apagarCadastro(Pessoa lista_aluno[], int qtd_alunos) {
 
       printf("/n");
       printf("Deseja excluir o registro desse(a) aluno(a)? 1- Sim ou 2- Não: ");
-      scanf("%d",%apagar);
+      scanf("%d",&apagar);
       fflush(stdin);
 
-    size_t n = sizeof(lista_aluno);
+    size_t n = sizeof(lista_aluno->nome);
       
       if(apagar==1){
-        for(i=retorno_busca,i<n, i++){
+        for(i=retorno_busca;i<n; i++){
           lista_aluno[i]=lista_aluno[i+1];
           printf("Registro Apagado do Sistema! \n");
           }
       }else{
-          print("Exclusão Não Realizada \n");
+          printf("Exclusão Não Realizada \n");
         }
       
     }
@@ -159,61 +207,16 @@ void apagarCadastro(Pessoa lista_aluno[], int qtd_alunos) {
 void atualizarCadastro() {}
 
 
-
-int buscaAluno(Pessoa lista_aluno[], int qtd_alunos){
-
-  int opcao;
-  int buscaMatricula;
-  char buscaNome[30];
-
-  printf("Deseja Buscar o Aluno por 1-Nome ou 2- Matricula ? : ");
-  scanf(%d, &opcao);
-
-  if(opcao==1){
-    printf("Digite o nome do aluno(a): ");
-    fgets(buscaNome, 31, stdin);
-    size_t ln = strlen(buscaNome) - 1;
-      if (buscaNome == '\n')
-          buscaNome = '\0';  
-
-    for(i=0, i<=qtd_alunos, i++){
-      if(buscaNome==lista_aluno[i].nome)
-        return i;
-      else{
-        printf("Aluno não encontrado!");
-        return 0;
-      }
-    }
-  }
-
-  if(opcao==2){
-    printf("Digite a matricula do aluno(a): ")
-    scanf(%d, &buscaMatricula);
-    fflush(stdin);  
-
-    for(i=0, i<=qtd_alunos, i++){
-      if(buscaMatricula==lista_aluno[i].matricula)
-        return i;
-      else{
-        printf("Aluno não encontrado!");
-        return 0;
-      }
-    }
-  }
-  }
-  
-}
-
 void aniversarianteDoMes(Pessoa lista_aluno[], int qtd_alunos){
 
   int mes;
-
+  int i;
   printf("Digite o Mês (em número) que deseja listar os aniversáriantes:");
   scanf("%d",&mes);
 
   if(mes<0 && mes<13){
     printf("ANIVERSARIANTES DO MÊS %d: \n",mes);
-    for(i=0, i<=qtd_alunos, i++){
+    for(i=0;i<=qtd_alunos; i++){
       if(lista_aluno[i].dataNascimento.mes==mes){
         printf("\n-----------------------------\n");
         puts(lista_aluno[i].nome);

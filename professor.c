@@ -70,16 +70,17 @@ void listarProfessores(Pessoa lista_professor[], int qtd_professores)
 
 void listarProfessorSexo(Pessoa lista_professor[], int qtd_professores){
   int opcao;
-
-  size_t n = sizeof(lista_professor);
+  int i;
+  
+  size_t n = sizeof(lista_professor->nome);
 
   printf("Deseja Lista os Professores do sexo 1- Masculino ou 2- Feminino? ");
-  scanf(%d,&opcao)
+  scanf("%d",&opcao);
 
   
   if(opcao==1){
-    for(i=0, i<=n, i++){
-      if(lista_professor[i]=="M"){
+    for(i=0; i<=n; i++){
+      if(lista_professor[i].sexo=='M'){
         printf("\n-----------------------------\n");
         puts(lista_professor[i].nome);
         printf("%d \n", lista_professor[i].matricula);
@@ -90,8 +91,8 @@ void listarProfessorSexo(Pessoa lista_professor[], int qtd_professores){
     }
 
   }else if(opcao==2){
-    for(i=0, i<=n, i++){
-      if(lista_professor[i]=="F"){
+    for(i=0; i<=n; i++){
+      if(lista_professor[i].sexo=='F'){
         printf("\n-----------------------------\n");
         puts(lista_professor[i].nome);
         printf("%d \n", lista_professor[i].matricula);
