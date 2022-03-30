@@ -39,6 +39,7 @@ int main(int argc, char **argv)
 
     // printf("-----------------------------\n");
     menu_opt = menu();
+    fflush(stdin);
     for (;;)
     {
         switch (menu_opt)
@@ -62,7 +63,7 @@ int main(int argc, char **argv)
         case 6:
             listarProfessores(lista_professor, qtd_professores);
         case 7:
-            listarDisciplina(lista_disciplina, qtd_disciplina);
+            // listarDisciplina(lista_disciplina, qtd_disciplina);
         case 8:
             continue;
 

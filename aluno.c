@@ -21,6 +21,7 @@ int cadastroAluno(Pessoa lista_aluno[], int qtd_alunos)
   size_t ln = strlen(lista_aluno[qtd_alunos].nome) - 1;
   if (lista_aluno[qtd_alunos].nome[ln] == '\n')
     lista_aluno[qtd_alunos].nome[ln] = '\0';
+  fflush(stdin);
 
   printf("Digite o CPF: ");
   fgets(lista_aluno[qtd_alunos].cpf, 15, stdin);
